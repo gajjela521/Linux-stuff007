@@ -1,0 +1,841 @@
+                               Linux Commands 
+
+touch - create a empty file
+--> touch <filename> (eg. touch ABC)
+
+to create empty multiple files at a time
+--> touch <filename>{1..(Upto Times)}   (eg. touch ABC{1..100})
+
+to create hidden empty files
+--> touch .<filename> (eg. touch .ABC)
+
+remove files
+--> rm <filename> (eg. rm ABC)
+
+remove files forcefully
+--> rm -rf <filename>
+
+remove all files forcefully
+--> rm -rf *
+
+remove all hidden files forcefully
+--> rm -rf .*
+
+remove multiple files forcefully
+--> rm -rf "<filename>"*
+
+create a file
+--> cat > <filename>  (eg. cat > ABC => Then Enter and Enter the data and last CTRL + D to exit)
+
+Appending the data in file
+--> cat >> <filename> 
+
+ls options
+-a all
+-l listing
+-t (WRT)time
+-r reverse
+
+Trival Entry
+
+
+Absolute Path (starting with /) (eg. /root)
+Relative Path (Not Starting with /) (eg. cd users/music)
+
+Root is the Owner
+
+Types of File
+
+- means file in ls at starting
+d means directory in ls at starting
+l means link --"--
+b means block --"--
+c means char --"--
+s means socket --"--
+p means pipe --"--
+
+Create a Directory
+--> mkdir <directory_name>
+
+create a parent and child directory
+--> mkdir -p /<parent_directory_name>/<child_directory_name>
+
+Change the Date 
+-->date -s <time>  (eg. date -s 12:40)
+
+change date and time
+--> date <month><date><time><hours><minute><year>
+
+See Calendar
+--> cal
+
+To see particular calendar
+--> cal <month><year>
+
+To see first n lines
+--> head -n 
+
+To see Logs Continuosuly
+--> tailf /var/log/messages/
+
+To see size of files in human readable
+--> df -h   (Because linux treates all files&directory in file) 
+
+To see size of files in human readable and File System Types
+--> df -hT   (Because linux treates all files&directory in file) 
+
+To see disk Usage 
+-->du
+
+To see disk Usage in Human readable
+-->du -sh
+
+To see disk Usage in Human readable for particular file
+-->du -sh /<particular_folder>/
+
+To see Kernel name
+--> uname -a
+
+To see Kernel release/information
+--> uname -r
+
+Find the files & Directory
+--> find <source> -name <name>  (eg find / -name ABC)
+Attributes
+-name, -user, -uid, -inum, -list (previou commands) ,
+
+Find all types of hidden files
+--> find / type f -name "."*
+
+Grep is used to find the word
+-->grep "<word>" -<type/attribute> <file_name>  (eg. grep "is" -n ABC)
+
+To find multiple words at a time 
+--> grep -e "<word>" -e "<word>" <filename> 
+
+Locate used to get location of files and directory 
+-->updatedb
+--> locate <filename>
+
+Numeric and Symbolic (For Changing Permission it is used)
+Numeric 777 
+Symbolic +(add permission), -(remove permission), =(equal permission)
+
+--> chmod 777 <filename> (Numeric Permission)
+--> chmod u+x,g+w,o+r <filename> (Symbolic permission for adding)
+
+UMASK (defualt mask value of root is 022,defualt mask value of normal is 002)
+-->umask
+
+Change the umask value
+--> umask 002
+
+change umask value permanently
+--> vim etc/bashrc
+
+Links are Collections to the pointers whatever the data adding in source automatically get added we can link between files to files and directory  to directory
+Soft Links - 
+Hard Links - Can Link B/W file to file but can't link between Directory-to-Directory. Hard Link files can't identify which is source file or destination file. Inode number and size are same. In Hard link if we remove source file we can access destination file. 
+--> ln <source_file> <destination_file>
+
+Tar for Compression 
+-c create
+-v verbose
+-t list
+-f file
+-u update
+-x extract
+-z gzip
+-j bzip
+-- delete archive file
+
+Syntax 
+--> tar -cvf <filename>.tar <source_file_to_tar>  (eg. tar -cvf file.tar /etc ( to copy /etc files and folders))
+
+For Zipping
+--> gzip <filename>.tgz (eg.  --> gzip file.tar)
+
+For Unzip
+--> gunzip <filename> (eg. --> gunzip file.tar.gz)
+
+For Zip bzip
+--> bzip <
+
+For unzip bun
+bunzip
+For delete
+--> 
+
+			VI
+
+In Linux their are many editors like vi,vim,gedit.
+vi is a classic screen based editor
+vim is vi improved enhanced programers support coloring,highlights (from 5.5)
+There are three modes
+insert modes,command modes,colon modes
+Insert Mode - we can write the data (press i to insert, ESC + : +wq (to save),ESC + q! (to unsave) for save & quit SHIIFT+Z+Z)
+Escape Mode - (ALL COMMANDS WILL BE WORK WITH ESCAPE MODES ONLY)
+ESC + O(Captial O ) - to goto above the line
+ESC + :set nu (For Number Line) , ESC + :set no nu (For No Number Line)
+For Copy yw (For Word) and for Paste p
+For Copy yy (For Lines) and for Paste p
+For Copying Number of words/Lines for n times (ny) (eg  10y)
+For Cut x (For Character)
+For Delete dd (For Line) , Multiple Lines Delete ndd (eg. 10dd), For delete n Words ndw (eg. 10dw )
+For Undo u
+For Redo CTRL + SHIFT + R
+For Searching :/<word>
+For Encrypt SHIFT + : + X & set Password (It Will Work In VIM)
+For Decrypt SHIFT + : + X & set Password Null & : + wq
+
+                   Types of user
+
+Root,Normal -(Network & Sudo),System - (have UID)
+UID - for system & Kernel Purpose (For Root & Kernel 0 is uid)
+UID  Starts from 1-499 (Actually 1-199) (For System User)
+UID  Starts from 499-69000 (For Normal User)
+
+At the time of creation of user by default
+home directory - /home/sam(Default user created by root (user_name -sam))
+Mail directory - /var/mail/sam
+and uid,gid,shell are created
+
+When at the time of creation
+/etc/passwd - user information file
+/etc/shadow - user password file
+/etc/group  -group information file
+/etc/gshadow - group password file
+
+To add user
+-->useradd <username> OR -->adduser <username>
+
+Open Shadow file
+Dhanis:X:502:502::/home/Dhanis:/bin/bash   
+Description of above what it is(username:Pointer to Password :uid:gid:home_directory:shell)
+
+Group File
+--> vim /etc/group    (eg. group has Dhanis:x:502: ) Description is (group_name:pointer_to_password(ie. gshadow):gid:)
+
+shadow file
+--> vim /etc/shadow   (eg. Dhanis:!!:18086:0:99999:7:::) Description is (username:if password assign then Encrypt OR !! : 1(see down) : 2(see down) : 3(see down) : 4(see down) : 5(see down) )
+the number of days since the last password changed it will calculate from jan 1970
+the minimum number of days before password will change
+number of days after which password must be changed
+number of days warning will display to user before the account expiry
+future use
+
+Delete user
+--> userdel <username> (Here user will be deleted but not home directory)
+
+Delete user and home directory
+--> userdel -r <username> (Here all will be delted user as well as home directory)
+
+usermod (User)
+-c comment
+-u uid
+-g gid
+-s shell
+-d directory
+
+
+--> usermod <options> <uid_number> <username> (eg. usermod -u 502 ad [for UID Change] )
+--> id <username> (eg. for checking id's ) 
+--> usermod <options> <uid_number> <username> (eg. usermod -g 500 ad [for GID Change we have to use ony available groups number] )
+--> usermod <options> <directory_path> (eg. usermod -d /dhanis/ad [for Directory Change] )
+(For changing Shell)
+--> usermod -s /sbin/nologin <username> (For Shell 
+--> usermod -s /bin/bash <username> 
+
+Lock User
+-->usermod -L <username>
+
+password
+--> passwd <username> 
+
+GROUPADD
+--> groupadd <groupname> (eg. groupadd IT)
+
+Add a particular users to group
+--> usermod <options> <groupname> <username>(eg. usermod -G [for secondary] Dhanis IT)
+
+Add multiple users to group
+--> usermod <options> <groupname>,<groupname> <username>(eg. usermod -G [for secondary] Dhanis IT)
+					
+seee the user group
+--> vim /etc/group
+
+delete a group
+--> groupdel <groupname>  (eg. groupdel IT)
+
+password for group
+--> gpasswd <groupname> (eg. gpasswd IT)
+
+remove the password
+--> gpasswd -r <groupname> (eg. gpasswd -r IT)
+
+To open etc of paticular 
+getent passwd <username> (eg. getent passwd Dhanis)
+
+
+Skelton File (Whenever we create user it has skeleton file and it is in hidden format )
+--> cd /etc/skel/
+
+For changing information for user (Seen in /etc/shadow/ [in this maximum password,]
+chage <user> (eg. All information we can change here) 
+
+Sudo user      [SEEE]
+-->vim /etc/sudoers and give permission
+
+To change ownwer and group owner
+--> chown <username> <directory/files> (eg. chown Dhanis ad)
+
+To change Group
+-->chgrp <groupname> <directory/files> (eg. chgrp Dhanis ad)
+
+Special Permission
+We set gid to 2
+
+--> chmod g+s <directory_name> (eg. chmod g+s 
+
+Sticky bit is special permission for normal user. Value of sticky bit is 1
+
+-->chmod o+t <directory_name/files> (eg. chmod o+t commands) (Permission of g+s for other and S is for groups)
+
+                          Access Control List 
+
+ACL is to used for giving different permissions to different users and different permissions to groups
+
+check ACL permission
+--> getfacl <directory_name> (eg. getfacl Dhanis)
+
+Giving Full permission for Users
+--> setfacl <options> u:<user_name>:<permission> <directory_name> (eg. setfacl -m u:tom:rwx a) (m-modify)
+
+Giving Full permission for group
+--> setfacl <options> g:<group_name>:<permission> <directory_name> (eg. setfacl -m g:AWS:rwx a) (m-modify)
+
+Removing permission for users
+--> setfacl <options> <username> <directory_name> (eg. setfacl -x tom a) (x-remove)
+
+Removing permission for groups
+--> setfacl <options> g:<groupname> <directory_name> (eg. setfacl -x g:AWS a) (x-remove)
+
+When we remove acl then also their is "+" sign because we have remove it in binary level not in kernel level
+
+To remove from kernel level
+-->setfacl -b <directory_name> (eg. setfacl -b a)
+
+To see the disk list
+
+--> fdisk -l
+
+To create the partition
+-->fdisk /dev/sda/
+-->m (help)
+-->n(create the partition with disk size)
+-->w(to create and to write into the disk)
+
+To update the disk created command is
+--> partx -a /dev/sda
+
+Making disk partition with file system
+--> mkfs.ext4 /dev/<partition_you_have_created>   (eg. mkfs.ext4 /dev/sda5)
+
+Files system is nothing but giving structure to the partitions without file system we can't perform read,write operations
+
+To see all the file system 
+--> cat etc/filesystems
+
+Block Id / UUID(Unique ID)
+--> blkid <device_name/partition_name> (eg. blkid /dev/sda5)
+
+Mount is the process of attaching the file system or partitions to the mount point/ directory
+
+types of mounting
+
+Temporary - In Temporary, if we mount the file system/partitions after reboot connecting B/W mount point and file system will not be there
+Permanent - In Permanent, attaching will be their 
+
+create a mount point 
+--> mkdir /mount
+--> mount /dev/<partition_name> <mount_point>/   (eg. mount /dev/sda5 /mount/)  (This Mount will be temporary)
+
+To see the disk 
+--> df -h
+
+To see the disk & File System
+--> df -hT
+
+For permanently mounting Edit /etc/fstab (File system table file)
+--> vim /etc/fstab
+--> /dev/<partition_name>  /mount  ext4  defaults   0 0    [Description(partiton   mount   file_system   permissions(RWX)  dump(backup)(For backup 1)  scanning(For Virus,etc)(For scanning-2 1-checking 0-No checking))]
+--> save & quit
+--> mount -a (It will mount all the partitions which we make the changes in /etc/fstab)
+
+Delete the partition
+
+first unmount
+-->umount /mount/
+-->fdisk /dev/sda
+--> select d
+--> select w
+
+                            Swap Partition
+
+Swap is a virtual Memory
+
+To create a swap 
+--> fdisk /dev/sda
+--> select n
+--> size +500M
+--> select t
+--> select 6
+--> select 82 (To check 82 type L then see which you want) (Here we chnge the system Id to recognize the kernel)(Here we create a raw file do the formatting)
+--> select w
+
+-->mkswap /dev/<swap_partition_name>  (eg. mkswap /dev/sda6)
+
+To check swap partition
+-->swapon -s
+
+To active the swap partition
+--> swapon /dev/<swap_partition_name>  (eg. swapon /dev/sda6)
+
+To deactive swap partition
+--> swapoff /dev/<swap_partition_name> (eg. swapoff /dev/sda6)
+
+                    LVM
+LVM is used to shrik and extend the size of volume during runtime.
+LVM is used to bring the file system capability,availability and perfomance during runttime.
+In LVM their is three object
+PV (Physical Volume) Physical volume is normal partition. It has ID 8e (#Required)
+VG (Volume Group) - Is a collection of one or more physical volume
+LV (Logical Volume)
+
+To create a PV 
+[First create a Disk]
+--> fdisk /dev/sda
+--> select n
+--> give size
+--> select t
+--> select 8e
+--> select w
+
+--> pvcreate /dev/<partition_disk> (eg. pvcreate /dev/sda6 /dev/sd7 /dev/sda8)
+--> pvs (pv size)
+--> pvdisplay (to display pv's)
+
+To create a logical volume
+-->vgcreate <vgName> <partition_name>   (eg. vgcreate  )
+-->vgdisplay
+
+To Create a LVM
+-->lvcreate -n <lvmname> -L 200M <vgname>
+--> mkfs.ext4 /dev/<vgnmae>/<lvmname>
+--> lvs (lv size)
+--> mkdir mount(Mount_Point)
+--> mount /dev/<vgname>/<lvmname> <mount_point>
+
+
+                     		       LVM
+
+   		                      Resize
+   			       	      / \  
+				     /   \
+		              Extended  Reduce
+
+
+-->vgextend <vgname> <partition_disk_to_extend>  (eg. vgextend CVB /dev/sda10)
+-->lvextend -L +100M /dev/<vgname><lvmname>
+
+To reduce lvm
+to unmount
+->umount /dev/<vgname><lvmname>  (eg. umount /dev/MYVG/MYLVM)
+
+to scan the file system of the partitions
+-->e2fsck -f /dev/<vgname>/<lvmname> (-f forcefully)  (e2fsck -f /dev/MYVG/MYLVM)
+
+to reduce lvm
+--> resize2fs /dev/<vgname>/<lvmname> size   (eg. resize2fs /dev/MYVG/MYLVM 50M)
+--> lvreduce -L 100M /dev/<vgname>/<lvmname> (lvreduce -L 50M /dev/MYVG/MYLVM )
+--> lvs
+--> mount
+
+to reduce the vg
+--> vgreduce <vgname> <partiton_name>   (eg. vgreduce MYVG /dev/sda10)
+
+To remove LVM
+--> umount <mylvmnae>
+-->lvremove <lvmname>
+
+to remove vg
+--> vgremove <vgname>
+
+to remove pvs
+--> pvs (To see all pv's)
+--> pvremove /dev/<partition_name>  (eg. pvremove /dev/sda7 /dev/sda8 /dev/sda9)
+--> fdisk -l (After removing pv's remove the physical drive also)
+--> fdisk /dev/sda
+--> select d
+--> select <disk_number>
+--> select w
+--> partx -a /dev/sda
+
+
+                                                          RAID
+
+Hardware RAID - We are using hardware raid controllers. Raid is used to provide security to data if OS get crashed we can recover the data very RAID controller
+H/W Raid is more expensive 
+Software RAID - In S/W Raid their are
+RAID 0 (Stripping) -  No security of data and writing is faster than reading. One or more disk is required (Here parallel are done but hard disk fails then data can't be recovered)
+RAID 0 (Concatenation) - No security of data and reading is faster than writing. (Here serial are done but hard disk fails then data can be recovered)
+RAID 1 (Mirroring) - If one hard disk crashed then we can recover the data. Two or more hard disk is required. Reading is faster than writing security of data is their
+RAID 5 (Parity) - In parity we require more than two hard disk partition will acts as a hard disk. Data security is their. Writing is faster than reading.
+
+-->lvcreate <vgname> -L +100M i 1 (i for number of hard disk)
+
+create RAID 1 Mirroring
+--> lvcreate <vgname> -L +100M(Give Size) -n <give_lvmname_RAID> -m 2   (-m for mirroring,-n for lvmname)
+
+create RAID 5 Parity 
+--> lvcreate <vgname> -L +100M(Give Size) -n <give_lvmname_RAID> -type raid5
+
+
+							Journaling  
+
+File system journaling is the advance version of file system to repair the file system at the time of read write permission
+Journal files are present in the area which can't be accessed by any users these files are used to recover the files/data
+File system journaling are availabel in ext3,ext4 and xfs(File System used in RedHat) system
+Journal File Contains Metadata of system.
+
+
+Kernel is Extracted
+/etc/grub.conf
+
+Runlevels
+/etc/inittab
+
+To see runlevel
+--> runlevel
+
+To go to particular runlevel
+--> init 5
+
+Password for grub
+--> grub-md5-crypt 
+--> set Password
+--> Copy the encryption password
+
+--> vim /etc/grub.conf 
+--> Down of hiddenmenu
+--> password --md5 <encryption_key>
+
+To see the services on runlevel
+--> chkconfig --list
+
+To on the services on runlevel
+--> chkconfig <service_name> on   (eg. chkconfig httpd on)
+
+To see the services running on runlevel
+--> chkconfig --list <service_name>  (eg. chkconfig --list httpd)
+
+To on the services on particular runlevel
+--> chkconfig --level <runlevel> <service_name> on   (eg. chkconfig --level 3 httpd on)
+
+Start/Stop/Restart the services
+--> service <service_name> restart/start/stop
+
+Manage the services graphically
+--> system-config-services
+
+To see the process tree
+-->pstree
+
+To see ALl users and terminal
+--> ps -aux (a-all, u-user, x-terminal)   Seen in ps -aux (VSZ-Virtual Set Size, RSS-Resident Set Size(Non-Swap Physical Memory),STAT- Status)
+
+To see the ongoing and all process activity in REAL TIME
+--> top  (To stop [CTRL+Z] )
+
+To kill the process
+--> kill -9 <pid>  (9- Forcefully)
+
+For memory information
+--> free
+
+Virtual Memory information
+--> vmstat
+
+Check open file system
+--> lsof
+
+To Check port number
+--> /etc/services
+
+To Check port number is in running
+--> lsof -i tcp:<port_number>/<port_name>
+
+To see the logs
+-->tail /var/logs/messages
+
+Kernel bootup messages
+-->dmesg |less
+
+Display Hardware Configuration
+--> lspci
+
+Package of kernel is known as module
+To check the information of module
+--> lsmod
+
+To load or install module
+--> modprobe <module_name>   (eg. modprobe <See_And_Write_From_Internet> )
+
+To remove load or installed module
+--> modprobe -r <module_name>   (eg. modprobe <See_And_Write_From_Internet> )
+
+
+                                         NTP(Network Time Protocol) Server
+
+To syncronize date and time over the network
+
+To edit Time & Date over the network through CLI
+--> system-config-date
+
+To check the ip address
+--> ifconfig 
+-->
+ 
+ 				RPM
+
+To see all the packages(Software)
+--> rpm -qa                     (rpm-redhat package manager, qa- query all)
+
+To see a particular package
+--> rpm -q <package_name>
+
+All the rpm packages are store in 
+cd /media/RHEL_6.5 *86_64 Disc 1
+
+Installing a package in rpm
+--> cd packages
+--> rpm -ivh <package_name>(Press Tab Here for package_name) (i-install v-verbose h-hash)
+
+To unistall a package
+--> rpm -e <package_name>  (e- erase/uninstall)
+
+Yum server is using for to create to arrange all the rpm pakages with its dependencies in a proper format to install. Foryum server we need to create a repository.
+
+configure the ftp server to create repository server
+--> rpm -ivh vsftpd<Press Tab Here> 
+--> cd -r Packages /var/ftp/pub (Here cd to packages then type this command)
+--> rpm -ivh createrepo-<Press Tab Here>
+-->
+--> Install the necessary and recommended packages After that
+--> createrepo <path_name>   (eg. createrepo /var/ftp/pub/Packages CHange directory to packages)
+
+To create a repo file
+--> vim /etc/yum.repo.d/abc(filename).repo
+--> [abc]                          (Type what is being written as it is)
+--> baseurl=ftp://<ipaddress>/pub/Packages
+--> gpgcheck=0
+--> enabled=1
+--> save & quit
+--> service vsftpd restart
+--> yum list  (To check the repository command)
+--> System-Administration-Firewall-Disable Firewall-Apply (Top Ribbon through GUI)
+--> yum remove <package_name>
+
+		[To the client Side to install the packages creted through repo]
+
+--> ping <ipaddress>      (Is in State or not)
+--> vim /etc/yum.repos.d/Da.repo
+--> [Da]
+--> baseurl=ftp://<ipaddress>/pub/Packages
+--> gpgcheck=0
+--> enabled=1
+--> save & quit
+--> System-Administration-Firewall-Disable Firewall-Apply (Top Ribbon through GUI)
+--> yum install <package_name>*     (eg. yum install httpd* ) 
+
+                 [If IP is not their then do these]
+--> vim /etc/sysconfig/network-scripts/ifconfig-eth0
+--> change onboot=yes
+--> save & quit
+--> Restart <service>    (eg. service network restart)
+
+
+In Linux their are three types of security
+SE Linux
+IP tables
+TCP Wrappers
+
+
+SE Linux -SE Linux is a security enhanced linux used to monitor demaons or process and the file which are accessed by user (It is a file based linux security)
+It Works on modules known as LSM ( Linux Security Module). 
+
+To chech se linux status
+--> sestatus
+
+					     SELINUX
+					  /    \      \
+			                 /      \      \
+			     	   Enforcing Permissive Disabled
+
+To check currently SE linux working mode
+--> getenforce
+
+To Change SE linux Mode Temporarly
+--> setenforce 1           (Modes: 1-Enforcing(Active), 0-Permissive(Inative))
+
+Change the Mod Permanently
+--> lokkit --selinux <Mode>    (eg. lokkit --selinux Enforcing/Permissive/Disabled)
+--> etc/selinux/config         (Through Configuration)
+
+For giving permission to file based linux se has two types : Context and boolean
+--> ls -ld /var/ftp/pub
+
+--> ls -lzd /var/ftp/pub (To check the context of the directory)
+
+system_u:object_r:public_content_t (Description is down)
+
+system_u: user it indicates types of user that is login to the system if a user loged as a root they will have a user value as a root if other user created directory then user_u (Here system_u means created by root)
+object_r: object_r is a role for the particular file or folders (As a admin or normal user)
+public_content_t : Type of a permission given by
+
+To check the type of permission 
+--> man selinux       (To see the types of permission is given by)
+
+Boolean are set of binary used for security in SELinux
+
+To check boolean
+-->getsebool -a
+
+To set boolean
+--> setsebool -P allow_ftpd_anon_write_on
+--> setsebool -P allow_ftpd_full_access_on
+
+
+For uploading to read and write
+--> chcon -R <permission> <directory_name> (eg. chcon -t public_content_rw_t /var/ftp/pub )
+--> ls -lZd /var/ftp/pub  (Here these "system_u:object_r:public_content_t" will come)
+
+Connect to ftp server
+--> ftp <ipaddress_of_server>
+--> ftp
+--> cd pub
+--> mkdir <directory_name>  (when directory is created then public acess if not set boolean)
+
+                                               TCP
+
+In hosts.allow file we will enter whom we want to give access
+
+To allow particular to connect 
+--> vim /etc/hosts.allow
+--> set vsftpd:<urlname>     (For Allowing
+
+To denied a particular network
+--> vim /etc/hosts.deny
+--> set vsftpd:<urlname>      (For Deny)
+
+                                      IP Tables
+It is a firewall for linux front-end tool to manage the net filter module which is integrated within the lnux kernel
+Their are three tables available with IP tables
+NAT -  NAT table is responsible for address translation
+Filter - Filter table is responsible for filtering the packets
+Mangle - Mangle table is responsible for packet marking
+
+Process Are :- 
+
+IP tables
+
+Chain
+-A Add
+-D Delete
+-R Replace
+_I Insert
+
+Layer 3 Objects
+-s source
+-d destination
+-p protocol
+--s source port
+--d destination port
+
+Jump
+-J ACCEPT/REJECT/DROP (jump to the specified target chain)
+ACCEPT  -allow incoming packet 
+REJECTS -allow outgoing packet without acknowledge
+DROP    -allow outgoing packet with acknowledge
+
+To flush
+--> iptable -F   (F-Flush)
+
+To add a particular ip address to table with action type
+--> iptables -A INPUT -s <source_IP> -d <destination_IP> -j <Action_type>  (eg. iptables -A INPUT -s 192.168.103.133 -d 192.168.130.134 -j DROP)  (Can go and see in ping command) 
+
+To see the IP tables
+--> iptables -l 
+
+To add a particular ip address to table with action type
+--> iptables -A INPUT -p tcp --dport <port_number> -s <source_IP> -d <destination_IP> -j <Action_type>  (eg. iptables -A INPUT -p tcp --dport 22 -s 192.168.103.133 -d 192.168.130.134 -j DROP)  (Can go and see in ping command) 
+
+To see the IP tables in number form
+--> iptables -nL
+
+To delete
+--> iptables -D INPUT <number>      (eg. iptables -D INPUT 1)
+
+                                          SSH Server
+
+--> vim /etc/ssh/sshd_config
+--> uncomment line 13 (Remove #)
+--> save & quit
+--> service sshd restart
+ 
+                  [CLIENT SIDE]
+
+--> ssh <ipaddress>
+--> give Password
+
+				SCP (Secure Copy)
+
+File copy from one system to another system without login
+--> scp -R <source_file> <destination>:<path>
+
+Centralized Log
+
+--> vim /etc/rsyslog.conf
+--> add ipaddress   (*     192.168.130.131)
+--> service rsyslog restart
+--> chkconfig rsyslog on
+
+Types of logs (disk device log,authentication logs,Emergency logs, Booting Logs)
+
+IP - Network Address + Host Address
+
+see all the network
+-->ls /etc/sysconfig/newtwork-scripts/
+
+check the hostname
+--> hostname
+
+chnage the hostname permanently
+--> vim /etc/hosts
+--> 192.168.130.133 (Add host)
+
+				NMAP (Network MAP)
+
+NMAP uses for port scanner
+
+Install nmap
+--> yum install map
+--> nmap <ipaddress>
+--> netstat -s
+
+cron scheduler is a default scheduler in a linux and the deamons used for cron is crond
+--> crontab -e (a-list e-edit)
+--> 15 15 12 07 /bin/date >> <file/directory> 
+
+To remove a crontab
+--> crontab -r
