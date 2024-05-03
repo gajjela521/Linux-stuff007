@@ -1,6 +1,6 @@
-                               Linux Commands 
+>>> Linux Commands 
 
-touch - create a empty file
+touch - create an empty file
 --> touch <filename> (eg. touch ABC)
 
 to create empty multiple files at a time
@@ -27,7 +27,7 @@ remove multiple files forcefully
 create a file
 --> cat > <filename>  (eg. cat > ABC => Then Enter and Enter the data and last CTRL + D to exit)
 
-Appending the data in file
+Appending the data in a file
 --> cat >> <filename> 
 
 ls options
@@ -47,7 +47,7 @@ Root is the Owner
 Types of File
 
 - means file in ls at starting
-d means directory in ls at starting
+d means directory in ls at the starting
 l means link --"--
 b means block --"--
 c means char --"--
@@ -69,31 +69,31 @@ change date and time
 See Calendar
 --> cal
 
-To see particular calendar
+To see a particular calendar
 --> cal <month><year>
 
-To see first n lines
+To see the first n lines
 --> head -n 
 
-To see Logs Continuosuly
+To see Logs continuously
 --> tailf /var/log/messages/
 
-To see size of files in human readable
---> df -h   (Because linux treates all files&directory in file) 
+To see the size of files in human-readable
+--> df -h   (Because Linux treats all files&directory in the file) 
 
-To see size of files in human readable and File System Types
---> df -hT   (Because linux treates all files&directory in file) 
+To see the size of files in human readable and File System Types
+--> df -hT   (Because Linux treats all files&directory in file) 
 
 To see disk Usage 
 -->du
 
-To see disk Usage in Human readable
+To see disk Usage in human-readable
 -->du -sh
 
-To see disk Usage in Human readable for particular file
+To see disk Usage in Human readable for the particular file
 -->du -sh /<particular_folder>/
 
-To see Kernel name
+To see the Kernel name
 --> uname -a
 
 To see Kernel release/information
@@ -102,7 +102,7 @@ To see Kernel release/information
 Find the files & Directory
 --> find <source> -name <name>  (eg find / -name ABC)
 Attributes
--name, -user, -uid, -inum, -list (previou commands) ,
+-name, -user, -uid, -inum, -list (previous commands) ,
 
 Find all types of hidden files
 --> find / type f -name "."*
@@ -113,7 +113,7 @@ Grep is used to find the word
 To find multiple words at a time 
 --> grep -e "<word>" -e "<word>" <filename> 
 
-Locate used to get location of files and directory 
+Locate is used to get the location of files and directory 
 -->updatedb
 --> locate <filename>
 
@@ -124,7 +124,7 @@ Symbolic +(add permission), -(remove permission), =(equal permission)
 --> chmod 777 <filename> (Numeric Permission)
 --> chmod u+x,g+w,o+r <filename> (Symbolic permission for adding)
 
-UMASK (defualt mask value of root is 022,defualt mask value of normal is 002)
+UMASK (default mask value of root is 022,default mask value of normal is 002)
 -->umask
 
 Change the umask value
@@ -133,9 +133,9 @@ Change the umask value
 change umask value permanently
 --> vim etc/bashrc
 
-Links are Collections to the pointers whatever the data adding in source automatically get added we can link between files to files and directory  to directory
+Links are Collections to the pointers whatever the data added in source automatically gets added we can link between files to files and directory  to directory
 Soft Links - 
-Hard Links - Can Link B/W file to file but can't link between Directory-to-Directory. Hard Link files can't identify which is source file or destination file. Inode number and size are same. In Hard link if we remove source file we can access destination file. 
+Hard Links - Can Link B/W file to file but can't link between Directory-to-Directory. Hard Link files can't identify which is the source file or the destination file. Inode number and size are the same. In Hard link if we remove the source file we can access the destination file. 
 --> ln <source_file> <destination_file>
 
 Tar for Compression 
@@ -168,7 +168,7 @@ For delete
 
 			VI
 
-In Linux their are many editors like vi,vim,gedit.
+In Linux, their are many editors like vi,vim,gedit.
 vi is a classic screen based editor
 vim is vi improved enhanced programers support coloring,highlights (from 5.5)
 There are three modes
